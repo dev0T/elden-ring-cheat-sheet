@@ -13,11 +13,32 @@ The front end has been bootstrapped by using the Angular CLI.
 ## Deliverables
 
 
-- Registration
-    - Screen name, email, password
-    - Screen name and email should be unique
-- Login
-- Logout
-- Store user data on MongoDB
-- Angular frontend using bootstrap
-- Different Profiles
+- Registration - 2
+- Login - 2
+- Logout - 2
+- Store user data on MongoDB - 4
+- Different Profiles - 4
+- Angular frontend using bootstrap - 1
+
+Data Structure
+    User
+        Email
+        Password
+        Profiles
+            Checklist
+
+Backend
+    API
+        Login
+        Register
+        Get profiles
+        Update profiles
+
+Frontend
+    Check if user logged in at root path
+    State Management
+    Integração com a API
+    Create new profile
+    Update profile
+    Delete profile
+    Styling - Bootstrap

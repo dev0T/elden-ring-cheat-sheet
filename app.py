@@ -4,7 +4,7 @@
 
 # source env/bin/activate
 # deactivate
-import os
+import os, re
 from datetime import datetime, timedelta
 from flask import Flask, jsonify, request, send_from_directory
 from flask_pymongo import PyMongo
@@ -22,7 +22,7 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__, static_url_path="", static_folder="client/build")
-app.config["JWT_TOKEN_LOCATION"] = ["headers", "cookies", "json", "query_string"]
+app.config["JWT_TOKEN_LOCATION"] = ["headers"]
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["ENV"] = os.environ.get("FLASK_ENV")
 app.config["JWT_SECRET_KEY"] = os.environ.get("SECRET_KEY")
@@ -48,27 +48,22 @@ def serve(path):
 def register():
     data = request.get_json()
     givenEmail = data["email"]
-    givenScreenName = data["name"]
 
-    if len(givenScreenName) < 2:
-        return jsonify(message="Screen name needs at least 2 characters."), 400
-    elif len(givenEmail) < 3:
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", givenEmail):
         return jsonify(message="Please provide an email address."), 400
     elif dbUsers.find_one({"email": givenEmail}):
         return jsonify(message="That email already exists."), 409
-    elif dbUsers.find_one({"screenname": givenScreenName}):
-        return jsonify(message="That screen name already exists."), 409
     else:
         newUser = {}
         newUser["email"] = givenEmail
-        newUser["screenname"] = givenScreenName
         newUser["password"] = generate_password_hash(data["password"], method="sha256")
+        newUser["profiles"] = [{"name": "default"}]
 
         dbUsers.insert_one(newUser)
-        access_token = create_access_token(identity=givenScreenName)
+        access_token = create_access_token(identity=givenEmail)
 
         return (
-            jsonify(message="User created successfully.", access_token=access_token),
+            jsonify(message="User created successfully.", user_identity=access_token),
             201,
         )
 
@@ -83,12 +78,37 @@ def login():
 
     if user is not None:
         if check_password_hash(user["password"], givenPassword):
-            access_token = create_access_token(identity=user["screenname"])
-            return jsonify(message="Login succeeded!", access_token=access_token)
+            access_token = create_access_token(identity=user["email"])
+            return jsonify(message="Login succeeded!", user_identity=access_token)
         else:
             return jsonify(message="Bad email or password"), 401
     else:
         return jsonify(message="User not found."), 404
+
+
+@app.route("/api/user", methods=["GET", "POST"])
+@jwt_required()
+def user():
+    current_user = get_jwt_identity()
+
+    if request.method == "POST":
+        data = request.get_json()
+        user = dbUsers.find_one_and_update(
+            {"email": current_user},
+            {"$set": {"profiles": data["profiles"]}},
+            {"_id": 0, "password": 0},
+        )
+        if user is not None:
+            return jsonify(user=user)
+        else:
+            return jsonify(message="User not found."), 404
+
+    elif request.method == "GET":
+        user = dbUsers.find_one({"email": current_user}, {"_id": 0, "password": 0})
+        if user is not None:
+            return jsonify(user=user)
+        else:
+            return jsonify(message="User not found."), 404
 
 
 if __name__ == "__main__":
