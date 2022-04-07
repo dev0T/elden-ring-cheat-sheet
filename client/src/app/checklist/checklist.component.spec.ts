@@ -8,9 +8,8 @@ describe('ChecklistComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChecklistComponent ]
-    })
-    .compileComponents();
+      declarations: [ChecklistComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
