@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../helpers/auth.service';
+import { SignRequest } from '../shared/siginRequest';
 
 @Component({
-  selector: 'app-register',
+  selector: 'register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  registerForm: FormGroup;
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.registerForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
+  ngOnInit(): void {}
+
+  onSubmit() {
+    const signRequest = new SignRequest(
+      this.registerForm.value.email,
+      this.registerForm.value.password
+    );
+    this.authService.register(signRequest);
+  }
 }
