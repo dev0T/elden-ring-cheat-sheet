@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {} from '@angular/forms';
 import { AuthService } from '../helpers/auth.service';
 import { SignRequest } from '../shared/siginRequest';

@@ -1,16 +1,36 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="form-field">
-      <label>Email:</label>
-      <input name="email" formControlName="email" />
-    </div>
-    <div class="form-field">
-      <label>Password:</label>
-      <input name="password" formControlName="password" type="password" />
-    </div>
-  </fieldset>
-  <div class="form-buttons">
-    <button class="button button-primary">Login</button>
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+  <div class="form-floating">
+    <input
+      type="email"
+      class="form-control"
+      id="emailInput"
+      placeholder="name@example.com"
+      formControlName="email"
+      required
+    />
+    <label for="floatingInput">Email address</label>
   </div>
+  <div class="form-floating">
+    <input
+      type="password"
+      class="form-control"
+      id="passwordInput"
+      placeholder="Password"
+      formControlName="password"
+      required
+    />
+    <label for="floatingPassword">Password</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit" id="login-submit">
+    Sign in
+  </button>
+  <div class="mb-3">
+    <label
+      >Don't have an account?
+      <a routerLink="/register" routerLinkActive="active">Register here.</a>
+    </label>
+  </div>
+  <p class="mt-5 mb-3 text-muted">Bootstrap &copy;</p>
 </form>
