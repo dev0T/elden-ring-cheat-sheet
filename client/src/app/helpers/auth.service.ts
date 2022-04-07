@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, shareReplay } from 'rxjs/operators';
+import { catchError, shareReplay } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
@@ -23,6 +23,7 @@ export class AuthService {
     return this.http
       .post<SignRequest>(`${this.endpoint}/api/login`, signRequest)
       .pipe(shareReplay())
+      .pipe(catchError(this.handleError))
       .subscribe((res: any) => {
         this.setSession(res.user_identity);
         this.getUserProfiles().subscribe((res) => {
@@ -36,9 +37,16 @@ export class AuthService {
     return this.currentUser;
   }
 
-  register(signRequest: SignRequest): Observable<any> {
+  register(signRequest: SignRequest) {
     let api = `${this.endpoint}/api/register`;
-    return this.http.post(api, signRequest).pipe(catchError(this.handleError));
+    return this.http
+      .post<SignRequest>(api, signRequest)
+      .pipe(shareReplay())
+      .pipe(catchError(this.handleError))
+      .subscribe((res: any) => {
+        this.setSession(res.user_identity);
+        this.router.navigateByUrl('/');
+      });
   }
 
   private setSession(token: string) {
@@ -56,7 +64,7 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('access_token');
     if (localStorage.getItem('access_token') == null) {
-      this.router.navigate(['login']);
+      this.router.navigateByUrl('/login');
     }
   }
 
@@ -75,14 +83,9 @@ export class AuthService {
     return !this.isLoggedIn();
   }
 
-  getUserProfiles(): Observable<any> {
+  getUserProfiles(): Observable<User> {
     let api = `${this.endpoint}/api/user`;
-    return this.http.get(api).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
+    return this.http.get<User>(api).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {

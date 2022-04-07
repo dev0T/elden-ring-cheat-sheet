@@ -1,0 +1,190 @@
+{
+  "armaments": [
+    {
+      "box": "box_arm_gbg",
+      "name": "Grafted Blade Greatsword",
+      "description": "Obtained by defeating the boss in Castle Morne at the Weeping Penisula.",
+      "link": "https://eldenring.wiki.fextralife.com/Grafted+Blade+Greatsword"
+    },
+    {
+      "box": "box_arm_snf",
+      "name": "Sword of Night and Flame",
+      "description": "Found in Caria Manor.",
+      "link": "https://eldenring.wiki.fextralife.com/Sword+of+Night+and+Flame"
+    },
+    {
+      "box": "box_arm_rg",
+      "name": "Ruins Greatsword",
+      "description": "Caelid Castle Boss Battle.",
+      "link": "https://eldenring.wiki.fextralife.com/Ruins+Greatsword"
+    },
+    {
+      "box": "box_arm_mes",
+      "name": "Marais Executioner's Sword",
+      "description": "Dropped by Elemer of the Briar at The Shaded Castle.",
+      "link": "https://eldenring.wiki.fextralife.com/Marais+Executioner's+Sword"
+    },
+    {
+      "box": "box_arm_dmg",
+      "name": "Dark Moon Greatsword",
+      "description": "Found below the Cathedral of Manus Celes at the end of Ranni's questline.",
+      "link": "https://eldenring.wiki.fextralife.com/Dark+Moon+Greatsword"
+    },
+    {
+      "box": "box_arm_es",
+      "name": "Eclipse Shotel",
+      "description": "Found at the altar of the church at Castle Sol.",
+      "link": "https://eldenring.wiki.fextralife.com/Eclipse+Shotel"
+    },
+    {
+      "box": "box_arm_ds",
+      "name": "Devourer's Scepter",
+      "description": "Dropped by invader npc at Crumbling Farum Azula.",
+      "link": "https://eldenring.wiki.fextralife.com/Devourer's+Scepter"
+    },
+    {
+      "box": "box_arm_gog",
+      "name": "Golden Order Greatsword",
+      "description": "Dropped by Misbegotten Crusader in the Cave of the Forlorn.",
+      "link": "https://eldenring.wiki.fextralife.com/Golden+Order+Greatsword"
+    },
+    {
+      "box": "box_arm_bog",
+      "name": "Bolt of Gransax",
+      "description": "Missable - Take the elevator down from the Erdtree Sanctuary grace, jump the ledge and climb the giant spear.",
+      "link": "https://eldenring.wiki.fextralife.com/Bolt+of+Gransax"
+    }
+  ],
+  "ashes": [
+    {
+      "box": "box_ash_mt",
+      "name": "Mimic Tear",
+      "description": "Missable - Take the elevator down from the Erdtree Sanctuary grace, jump the ledge and climb the giant spear.",
+      "link": "https://eldenring.wiki.fextralife.com/Grafted+Blade+Greatsword"
+    },
+    {
+      "box": "box_ash_lh",
+      "name": "Lhutel the Headless",
+      "description": "Dropped by the Cemetery Shade at the Tombsward Catacombs.",
+      "link": "https://eldenring.wiki.fextralife.com/Lhutel+the+Headless"
+    },
+    {
+      "box": "box_ash_bkt",
+      "name": "Black Knife Tiche",
+      "description": "Dropped by Alecto, Black Knife Ringleader upon defeat at the Ringleader's Evergaol.",
+      "link": "https://eldenring.wiki.fextralife.com/Black+Knife+Tiche+Ashes"
+    },
+    {
+      "box": "box_ash_rko",
+      "name": "Redmane Knight Ogha",
+      "description": "Dropped by the Putrid Tree Spirit in the War-Dead Catacombs.",
+      "link": "https://eldenring.wiki.fextralife.com/Redmane+Knight+Ogha+Ashes"
+    },
+    {
+      "box": "box_ash_adkk",
+      "name": "Ancient Dragon Knight Kristoff",
+      "description": "Dropped by Alecto, Black Knife Ringleader upon defeat at the Ringleader's Evergaol.",
+      "link": "https://eldenring.wiki.fextralife.com/Ancient+Dragon+Knight+Kristoff+Ashes"
+    },
+    {
+      "box": "box_ash_ckf",
+      "name": "Cleanrot Knight Finlay",
+      "description": "Obtained from a chest located at Elphael, Brace of the Haligtree.",
+      "link": "https://eldenring.wiki.fextralife.com/Cleanrot+Knight+Finlay+Ashes"
+    }
+  ],
+  "sorceries": [
+    {
+      "box": "box_sor_gr",
+      "name": "Greyoll's Roar",
+      "description": "Can be purchased after defeating Greyoll at the Dragon Communion Altar at the Cathedral of Dragon Communion.",
+      "link": "https://eldenring.wiki.fextralife.com/Greyoll's+Roar"
+    },
+    {
+      "box": "box_sor_ffg",
+      "name": "Flame of the Fell God",
+      "description": "Dropped by Adan, Thief of Fire.",
+      "link": "https://eldenring.wiki.fextralife.com/Flame+of+the+Fell+God"
+    },
+    {
+      "box": "box_sor_es",
+      "name": "Elden Stars",
+      "description": "Looted from the ground in a cave at the Deeproot Depths.",
+      "link": "https://eldenring.wiki.fextralife.com/Elden+Stars"
+    },
+    {
+      "box": "box_sor_frs",
+      "name": "Founding Rain of Stars",
+      "description": "Inside a chest within Heretical Rise, in Mountaintops of the Giants.",
+      "link": "https://eldenring.wiki.fextralife.com/Founding+Rain+of+Stars"
+    },
+    {
+      "box": "box_sor_rdm",
+      "name": "Ranni's Dark Moon",
+      "description": "Found in a chest at the top of Chelona's Rise.",
+      "link": "https://eldenring.wiki.fextralife.com/Ranni's+Dark+Moon"
+    },
+    {
+      "box": "box_sor_ca",
+      "name": "Comet Azur",
+      "description": "Acquired from Primeval Sorcerer Azur at the Hermit Village in Mt.Gelmir.",
+      "link": "https://eldenring.wiki.fextralife.com/Comet+Azur"
+    },
+    {
+      "box": "box_sor_sr",
+      "name": "Stars of Ruin",
+      "description": "Acquired from Master Lusat inside Sellia Hideaway.",
+      "link": "https://eldenring.wiki.fextralife.com/Stars+of+Ruin"
+    }
+  ],
+  "talismans": [
+    {
+      "box": "box_tal_ri",
+      "name": "Radagon Icon",
+      "description": "Found inside a treasure chest on the second floor of the Debate Parlor Site of Grace.",
+      "link": "https://eldenring.wiki.fextralife.com/Radagon+Icon"
+    },
+    {
+      "box": "box_sor_rs",
+      "name": "Radagon's Soreseal",
+      "description": "Found on a corpse at Fort Faroth.",
+      "link": "https://eldenring.wiki.fextralife.com/Radagon's+Soreseal"
+    },
+    {
+      "box": "box_sor_ms",
+      "name": "Marika's Soreseal",
+      "description": "Found on a corpse at Fort Faroth.",
+      "link": "https://eldenring.wiki.fextralife.com/Marika's+Soreseal"
+    },
+    {
+      "box": "box_sor_gi",
+      "name": "Godfrey Icon",
+      "description": "Drops from Godefroy the Grafted found in Golden Lineage Evergaol.",
+      "link": "https://eldenring.wiki.fextralife.com/Godfrey+Icon"
+    },
+    {
+      "box": "box_sor_mn",
+      "name": "Moon of Nokstella",
+      "description": "Found in a chest underneath a massive throne in Nokstella, Eternal City.",
+      "link": "https://eldenring.wiki.fextralife.com/Moon+of+Nokstella"
+    },
+    {
+      "box": "box_sor_dgt",
+      "name": "Dragoncrest Greatshield Talisman",
+      "description": "Found in a chest at Elphael, Brace of the Haligtree",
+      "link": "https://eldenring.wiki.fextralife.com/Dragoncrest+Greatshield+Talisman"
+    },
+    {
+      "box": "box_sor_olt",
+      "name": "Old Lord's Talisman",
+      "description": "Found in a chest in Crumbling Farum Azula.",
+      "link": "https://eldenring.wiki.fextralife.com/Old+Lord's+Talisman"
+    },
+    {
+      "box": "box_sor_ef2",
+      "name": "Erdtree's Favor +2",
+      "description": "Found on a dead tree in Leyndell, Ashen Capital",
+      "link": "https://eldenring.wiki.fextralife.com/Erdtree's+Favor"
+    }
+  ]
+}

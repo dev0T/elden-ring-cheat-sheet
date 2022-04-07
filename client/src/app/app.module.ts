@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavBarComponent } from './checklist/nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ChecklistComponent } from './checklist/checklist.component';
@@ -14,10 +13,9 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     LoginComponent,
     RegisterComponent,
-    ChecklistComponent,
+    ChecklistComponent
   ],
   imports: [
     BrowserModule,
