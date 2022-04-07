@@ -57,7 +57,7 @@ def register():
         newUser = {}
         newUser["email"] = givenEmail
         newUser["password"] = generate_password_hash(data["password"], method="sha256")
-        newUser["profiles"] = [{"name": "default"}]
+        newUser["profiles"] = [{"name": "default", "checklist": {}}]
 
         dbUsers.insert_one(newUser)
         access_token = create_access_token(identity=givenEmail)
@@ -95,18 +95,18 @@ def user():
         data = request.get_json()
         user = dbUsers.find_one_and_update(
             {"email": current_user},
-            {"$set": {"profiles": data["profiles"]}},
+            {"$set": {"profiles": data}},
             {"_id": 0, "password": 0},
         )
         if user is not None:
-            return jsonify(user=user)
+            return jsonify(user)
         else:
             return jsonify(message="User not found."), 404
 
     elif request.method == "GET":
         user = dbUsers.find_one({"email": current_user}, {"_id": 0, "password": 0})
         if user is not None:
-            return jsonify(user=user)
+            return jsonify(user)
         else:
             return jsonify(message="User not found."), 404
 
