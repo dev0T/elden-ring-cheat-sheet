@@ -1,5 +1,9 @@
 export class User {
   email!: String;
-  password!: String;
-  profiles!: [{}];
+  profiles!: Profile[];
+}
+
+export interface Profile {
+  name: string;
+  checklist: { [key: string]: object };
 }

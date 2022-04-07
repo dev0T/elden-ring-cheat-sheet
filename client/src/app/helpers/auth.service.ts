@@ -23,7 +23,7 @@ export class AuthService {
     return this.http
       .post<SignRequest>(`${this.endpoint}/api/login`, signRequest)
       .pipe(shareReplay())
-      .pipe(catchError(this.handleError))
+      .pipe(catchError((error) => this.handleError(error)))
       .subscribe((res: any) => {
         this.setSession(res.user_identity);
         this.getUserProfiles().subscribe((res) => {
@@ -85,7 +85,14 @@ export class AuthService {
 
   getUserProfiles(): Observable<User> {
     let api = `${this.endpoint}/api/user`;
-    return this.http.get<User>(api).pipe(catchError(this.handleError));
+    return this.http.get<User>(api).pipe(
+      catchError((err) => {
+        if (err.status == 404) {
+          this.logOut();
+        }
+        return this.handleError(err);
+      })
+    );
   }
 
   handleError(error: HttpErrorResponse) {
