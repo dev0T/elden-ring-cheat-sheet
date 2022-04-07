@@ -8,6 +8,7 @@ import os, re
 from datetime import datetime, timedelta
 from flask import Flask, jsonify, request, send_from_directory
 from flask_pymongo import PyMongo
+from pymongo.collection import ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (
     JWTManager,
@@ -97,6 +98,7 @@ def user():
             {"email": current_user},
             {"$set": {"profiles": data}},
             {"_id": 0, "password": 0},
+            return_document=ReturnDocument.AFTER,
         )
         if user is not None:
             return jsonify(user)
