@@ -42,3 +42,4 @@ Frontend
     Update profile
     Delete profile
     Styling - Bootstrap
+    Login Error warning + Sign in error warning
