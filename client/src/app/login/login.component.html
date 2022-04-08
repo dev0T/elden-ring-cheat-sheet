@@ -1,36 +1,48 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-  <div class="form-floating">
-    <input
-      type="email"
-      class="form-control"
-      id="emailInput"
-      placeholder="name@example.com"
-      formControlName="email"
-      required
-    />
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="password"
-      class="form-control"
-      id="passwordInput"
-      placeholder="Password"
-      formControlName="password"
-      required
-    />
-    <label for="floatingPassword">Password</label>
-  </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit" id="login-submit">
-    Sign in
-  </button>
-  <div class="mb-3">
-    <label
-      >Don't have an account?
-      <a routerLink="/register" routerLinkActive="active">Register here.</a>
-    </label>
-  </div>
-  <p class="mt-5 mb-3 text-muted">Bootstrap &copy;</p>
-</form>
+<div
+  class="d-flex flex-column flex-align-center m-auto pt-3"
+  style="width: 330px"
+>
+  <h1 class="mb-3 mt-4 p-3 fw-normal">Sign in</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-floating py-1">
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        placeholder="name@example.com"
+        formControlName="email"
+        required
+      />
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating py-1">
+      <input
+        type="password"
+        class="form-control"
+        id="passwordInput"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button
+      class="w-100 btn btn-secondary py-1"
+      type="submit"
+      id="login-submit"
+    >
+      Sign in
+    </button>
+    <div class="pb-3 mt-1">
+      <label
+        >Don't have an account?
+        <a
+          routerLink="/register"
+          routerLinkActive="active"
+          class="text-decoration-none"
+          >Register here.</a
+        >
+      </label>
+    </div>
+  </form>
+</div>

@@ -58,7 +58,7 @@ def register():
         newUser = {}
         newUser["email"] = givenEmail
         newUser["password"] = generate_password_hash(data["password"], method="sha256")
-        newUser["profiles"] = [{"name": "default", "checklist": {}}]
+        newUser["profiles"] = [{"name": "Default", "checklist": {}}]
 
         dbUsers.insert_one(newUser)
         access_token = create_access_token(identity=givenEmail)

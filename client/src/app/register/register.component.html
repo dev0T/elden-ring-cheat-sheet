@@ -1,40 +1,48 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <h1 class="h3 mb-3 fw-normal">Register</h1>
-
-  <div class="form-floating">
-    <input
-      type="email"
-      class="form-control"
-      id="emailInput"
-      formControlName="email"
-      placeholder="name@example.com"
-      required
-    />
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="password"
-      class="form-control"
-      id="passwordInput"
-      placeholder="Password"
-      formControlName="password"
-      required
-    />
-    <label for="floatingPassword">Password</label>
-  </div>
-  <button
-    class="w-100 btn btn-lg btn-primary"
-    type="submit"
-    id="register-submit"
-  >
-    Sign up
-  </button>
-  <div class="mb-3">
-    <label
-      >Already have an account?
-      <a routerLink="/login" routerLinkActive="active">Login here.</a>
-    </label>
-  </div>
-  <p class="mt-5 mb-3 text-muted">Bootstrap &copy;</p>
-</form>
+<div
+  class="d-flex flex-column flex-align-center m-auto pt-3"
+  style="width: 330px"
+>
+  <h1 class="mb-3 mt-4 p-3 fw-normal">Register</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-floating py-1">
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        formControlName="email"
+        placeholder="name@example.com"
+        required
+      />
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating py-1">
+      <input
+        type="password"
+        class="form-control"
+        id="passwordInput"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button
+      class="w-100 btn btn-secondary py-1"
+      type="submit"
+      id="register-submit"
+    >
+      Sign up
+    </button>
+    <div class="pb-3 mt-1">
+      <label
+        >Already have an account?
+        <a
+          routerLink="/login"
+          routerLinkActive="active"
+          class="text-decoration-none"
+          >Login here.</a
+        >
+      </label>
+    </div>
+  </form>
+</div>

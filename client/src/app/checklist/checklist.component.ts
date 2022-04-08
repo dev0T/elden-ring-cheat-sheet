@@ -24,16 +24,13 @@ export class ChecklistComponent implements OnInit {
   items = sampleData;
   item_types = Object.keys(this.items);
   userProfiles: Profile[] = [];
-  currentProfileName = 'default';
+  currentProfileName = '';
   currentProfile?: Profile;
   form: FormGroup;
   modalForm: FormGroup;
   helper = new JwtHelperService();
   private sub?: Subscription;
 
-  /**
-   * TODO
-   */
   get itemsFormGroup() {
     return this.form.controls['checklist'] as FormGroup;
   }
@@ -85,21 +82,18 @@ export class ChecklistComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUserProfiles().subscribe((user) => {
       this.userProfiles = user.profiles;
-      let activeProfile = this.targetProfileExists(this.currentProfileName);
-      if (activeProfile) {
-        if (Object.keys(activeProfile.checklist).length > 0) {
-          this.form.controls['checklist'].setValue(activeProfile.checklist);
-        } else {
-          this.form.reset();
-        }
-      } else this.form.controls['checklist'].setValue(this.userProfiles[0]);
+      this.currentProfile = this.userProfiles[0];
+      if (this.currentProfile) {
+        this.currentProfileName = this.currentProfile.name;
+        this.setChecklistValues();
+      } else this.currentProfileName = 'Default';
+      this.subFormChanges();
     });
-    this.subFormChanges();
   }
 
-  // ngOnDestroy() {
-  //   this.unsubFormChanges();
-  // }
+  ngOnDestroy() {
+    this.unsubFormChanges();
+  }
 
   /**
    * Check if there's a profile with given name inside the profile Array.
@@ -126,7 +120,6 @@ export class ChecklistComponent implements OnInit {
   subFormChanges() {
     this.sub = this.form.valueChanges.subscribe((value) => {
       this.setProfileValues(value);
-      console.log('Forms value changed');
     });
   }
 
@@ -146,10 +139,8 @@ export class ChecklistComponent implements OnInit {
   saveProfiles() {
     return this.http
       .post(`${this.endpoint}/api/user`, this.userProfiles)
-      .pipe(shareReplay())
-      .subscribe((res: any) => {
-        console.log('Save profiles called');
-      });
+      .pipe(shareReplay(1))
+      .subscribe();
   }
 
   setSelectedProfileByName(name: string) {
@@ -175,6 +166,11 @@ export class ChecklistComponent implements OnInit {
    */
   refreshChecklistValues() {
     this.unsubFormChanges();
+    this.setChecklistValues();
+    this.subFormChanges();
+  }
+
+  setChecklistValues() {
     if (this.currentProfile) {
       if (Object.keys(this.currentProfile.checklist).length > 0) {
         this.form.controls['checklist'].setValue(this.currentProfile.checklist);
@@ -182,7 +178,6 @@ export class ChecklistComponent implements OnInit {
         this.form.reset();
       }
     }
-    this.subFormChanges();
   }
 
   /**
@@ -222,15 +217,15 @@ export class ChecklistComponent implements OnInit {
     let currentProfile = this.targetProfileExists(this.currentProfileName);
     if (currentProfile) {
       let profileIndex = this.userProfiles?.indexOf(currentProfile);
-      if (profileIndex) {
+      if (profileIndex !== -1) {
         this.userProfiles?.splice(profileIndex, 1);
-        // TODO: Delete at the BE
         this.setSelectedProfileByName(this.userProfiles[0].name);
+        this.saveProfiles();
       }
     }
   }
 
-  logout() {
+  logOut() {
     this.authService.logOut();
   }
 }
