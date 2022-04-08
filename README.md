@@ -6,6 +6,7 @@ Team Members
 
 This app has been created using Flask, Angular and MongoDB.
 The front end has been bootstrapped by using the Angular CLI.
+There's also authentication using JWT.
 
 ## How to run the app locally
 

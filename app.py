@@ -2,8 +2,6 @@
 # 100350471
 # Documentation is located in the README.MD
 
-# source env/bin/activate
-# deactivate
 import os, re
 from datetime import datetime, timedelta
 from flask import Flask, jsonify, request, send_from_directory
@@ -35,6 +33,7 @@ mongo = PyMongo(app)
 CORS(app)
 
 dbUsers = mongo.db.Users
+
 
 @app.route("/", defaults={"path": ""})
 def serve(path):
