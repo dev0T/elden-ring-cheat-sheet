@@ -36,10 +36,6 @@ CORS(app)
 
 dbUsers = mongo.db.Users
 
-# In case all users need to be deleted:
-# dbUsers.delete_many({})
-
-
 @app.route("/", defaults={"path": ""})
 def serve(path):
     return send_from_directory(app.static_folder, "index.html")
