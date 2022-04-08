@@ -3,12 +3,11 @@
   style="width: 330px"
 >
   <h1 class="mb-3 mt-4 p-3 fw-normal">Sign in</h1>
-  <div
-    class="alert alert-danger alert-dismissible fade show"
-    role="alert"
-    *ngIf="this.authService.getAuthError()"
-  > 
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     Incorrect e-mail or password.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-floating py-1">

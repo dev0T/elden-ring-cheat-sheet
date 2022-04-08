@@ -3,13 +3,13 @@
   style="width: 330px"
 >
   <h1 class="mb-3 mt-4 p-3 fw-normal">Register</h1>
-  <div
-    class="alert alert-danger alert-dismissible fade show"
-    role="alert"
-    *ngIf="this.authService.getAuthError()"
-  >
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     This e-mail is already in use.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-floating py-1">
       <input
