@@ -10,14 +10,17 @@ import { SignRequest } from '../shared/siginRequest';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.registerForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.authService.resetAuthError();
+  }
 
   onSubmit() {
     const signRequest = new SignRequest(

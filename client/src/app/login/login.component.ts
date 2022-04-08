@@ -14,13 +14,15 @@ import { SignRequest } from '../shared/siginRequest';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.resetAuthError();
+  }
   onSubmit() {
     const signRequest = new SignRequest(
       this.loginForm.value.email,

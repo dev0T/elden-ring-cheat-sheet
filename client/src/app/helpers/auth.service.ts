@@ -16,6 +16,7 @@ export class AuthService {
   endpoint: string = this.API_URL;
   currentUser?: User;
   helper = new JwtHelperService();
+  authError = false;
 
   constructor(private http: HttpClient, public router: Router) {}
 
@@ -23,7 +24,12 @@ export class AuthService {
     return this.http
       .post<SignRequest>(`${this.endpoint}/api/login`, signRequest)
       .pipe(shareReplay())
-      .pipe(catchError((error) => this.handleError(error)))
+      .pipe(
+        catchError((error) => {
+          this.authError = true;
+          return this.handleError(error);
+        })
+      )
       .subscribe((res: any) => {
         this.setSession(res.user_identity);
         this.getUserProfiles().subscribe((res) => {
@@ -31,6 +37,14 @@ export class AuthService {
           this.router.navigateByUrl('/');
         });
       });
+  }
+
+  resetAuthError() {
+    this.authError = false;
+  }
+
+  getAuthError() {
+    return this.authError;
   }
 
   getCurrentUser() {
@@ -42,7 +56,12 @@ export class AuthService {
     return this.http
       .post<SignRequest>(api, signRequest)
       .pipe(shareReplay())
-      .pipe(catchError(this.handleError))
+      .pipe(
+        catchError((error) => {
+          this.authError = true;
+          return this.handleError(error);
+        })
+      )
       .subscribe((res: any) => {
         this.setSession(res.user_identity);
         this.router.navigateByUrl('/');
