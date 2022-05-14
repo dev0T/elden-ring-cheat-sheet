@@ -84,7 +84,7 @@ You can then proceed to use the application by navigating to `http://localhost:4
 
 ## References
 
-This project has been inspired by this project [this project](https://smcnabb.github.io/dark-souls-cheat-sheet/).
+This project has been inspired by [this project](https://smcnabb.github.io/dark-souls-cheat-sheet/).
 Their implementation relies on HTML, JS, JQuery and Bootstrap v2.1.1. Code from 12 years ago!
 
 All styling uses Bootstrap v5.0 along with a few components from [ng-bootstrap](https://ng-bootstrap.github.io/#/home).
